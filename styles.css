@@ -1,0 +1,26 @@
+/* Gradient background */
+body {
+    background: linear-gradient(to bottom right, #ffffff, #e0e0e0); /* Adjust gradient colors as desired */
+    height: 100vh; /* Ensure gradient covers entire viewport height */
+    margin: 0; /* Remove default margin */
+    display: flex;
+    justify-content: center;
+   
+}
+/* Custom styles for table */
+.table-custom {
+    background-color: #f8f9fa; /* Light gray background for the table */
+}
+
+/* Custom styles for form */
+.card-body {
+    background-color: #ffffff; /* White background for the form */
+    border: 1px solid #ced4da; /* Light gray border */
+    border-radius: 0.25rem; /* Rounded corners */
+}
+
+.card-header {
+    background-color: #007bff; /* Bootstrap primary color for card header */
+    color: #ffffff; /* Text color */
+    border-radius: 0.25rem 0.25rem 0 0; /* Rounded corners for top */
+}
