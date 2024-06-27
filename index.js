@@ -26,6 +26,7 @@ const stateSelect = document.getElementById('state');
 const citySelect = document.getElementById('city');
 let editingEmployeeId = null;
 function populateDropdown(selectElement, options) {
+    selectElement.innerHTML = '<option value="">Select</option>';
     options.forEach(option => {
         const opt = document.createElement('option');
         opt.value = option;
@@ -34,19 +35,16 @@ function populateDropdown(selectElement, options) {
     });
 }
 function populateStates() {
-    states.forEach(state => {
-        const opt = document.createElement('option');
-        opt.value = state.name;
-        opt.textContent = state.name;
-        stateSelect.appendChild(opt);
-    });
+    populateDropdown(stateSelect, states.map(state => state.name));
 }
 function handleStateChange() {
     const selectedState = stateSelect.value;
     const state = states.find(state => state.name === selectedState);
     if (state) {
-        citySelect.innerHTML = '<option value="">Select City</option>';
         populateDropdown(citySelect, state.cities);
+    }
+    else {
+        citySelect.innerHTML = '<option value="">Select City</option>';
     }
 }
 function renderTable() {
@@ -75,6 +73,7 @@ function hideForm() {
     employeeFormContainer.classList.add('d-none');
     employeeForm.reset();
     editingEmployeeId = null;
+    citySelect.innerHTML = '<option value="">Select City</option>';
 }
 function addOrUpdateEmployee(event) {
     event.preventDefault();
@@ -114,6 +113,7 @@ function handleEditClick(event) {
     document.getElementById('city').value = employee.city;
     document.getElementById('state').value = employee.state;
     document.getElementById('zip').value = employee.zip;
+    handleStateChange();
     showForm();
 }
 function handleDeleteClick(event) {
