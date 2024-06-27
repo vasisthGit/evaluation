@@ -138,7 +138,19 @@ function validateForm() {
     }
     const addressRegex = /[a-zA-Z]+/;
     if (!address || !addressRegex.test(address) || address.length > 40) {
-        alert('Please provide a valid address within 1 to 40 characters. Only numbers are not allowed.');
+        alert('Please provide a valid address within 1 to 40 characters. Only alphabets are allowed.');
+        return false;
+    }
+    if (!category) {
+        alert('Please select a category.');
+        return false;
+    }
+    if (!state) {
+        alert('Please select a state.');
+        return false;
+    }
+    if (!city) {
+        alert('Please select a city.');
         return false;
     }
     const zipRegex = /^\d{6}$/;
